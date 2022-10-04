@@ -5,37 +5,24 @@ format: html
 editor: visual
 ---
 
-## Quarto
-
-TEST
-
-```{r}
-library(rworldmap) 
-library(sf)
-library(rgeos)
-library(ggplot2)
-
-world_sf <- st_as_sf(getMap(resolution = "low"))
-
-crs_robin <- "+proj=robin +lat_0=0 +lon_0=0 +x0=0 +y0=0"
-
-p_map <- ggplot(world_sf) + 
-  geom_sf(size = 0.5/.pt) + 
-  coord_sf(crs = crs_robin) 
-p_map <- p_map + theme_minimal()
-p_map
-```
-##Import data
-```{r}
+## Import libraries
+```{r, messages = FALSE}
+library(tidyverse)
 library(readr)
-gdp <- read_csv("C:\\Users\\pscha\\Documents\\_School\\2022_Fall_Classes\\STAA_566_DataViz\\maps-pschaeferdc\\2017_gdp.csv")
-covid <- read_csv("C:\\Users\\pscha\\Documents\\_School\\2022_Fall_Classes\\STAA_566_DataViz\\maps-pschaeferdc\\covid_per_capita.csv")
-```
-
-```{r}
 library(mapdata)
 library(maps)
-map2 <- map_data('world')
+```
+
+
+## Import data
+```{r, messages = FALSE}
+gdp <- read_csv("C:\\Users\\pscha\\Documents\\_School\\2022_Fall_Classes\\STAA_566_DataViz\\maps-pschaeferdc\\2017_gdp.csv", show_col_types = FALSE)
+covid <- read_csv("C:\\Users\\pscha\\Documents\\_School\\2022_Fall_Classes\\STAA_566_DataViz\\maps-pschaeferdc\\covid_per_capita.csv",show_col_types = FALSE)
+```
+
+```{r}
+map2 <- map_data('world')%>%
+  mutate(region = str_to_title(region))
 p_map2 <- ggplot(data = map2,
                         mapping = aes(x = long, y = lat,
                                       group = group))
