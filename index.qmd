@@ -9,19 +9,41 @@ editor: visual
 
 TEST
 
-## Running Code
-
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
-
 ```{r}
-1 + 1
+library(rworldmap) 
+library(sf)
+library(rgeos)
+library(ggplot2)
+
+world_sf <- st_as_sf(getMap(resolution = "low"))
+
+crs_robin <- "+proj=robin +lat_0=0 +lon_0=0 +x0=0 +y0=0"
+
+p_map <- ggplot(world_sf) + 
+  geom_sf(size = 0.5/.pt) + 
+  coord_sf(crs = crs_robin) 
+p_map <- p_map + theme_minimal()
+p_map
+```
+##Import data
+```{r}
+library(readr)
+gdp <- read_csv("C:\\Users\\pscha\\Documents\\_School\\2022_Fall_Classes\\STAA_566_DataViz\\maps-pschaeferdc\\2017_gdp.csv")
+covid <- read_csv("C:\\Users\\pscha\\Documents\\_School\\2022_Fall_Classes\\STAA_566_DataViz\\maps-pschaeferdc\\covid_per_capita.csv")
 ```
 
-You can add options to executable code like this
-
 ```{r}
-#| echo: false
-2 * 2
+library(mapdata)
+library(maps)
+map2 <- map_data('world')
+p_map2 <- ggplot(data = map2,
+                        mapping = aes(x = long, y = lat,
+                                      group = group))
+p_map2 <- p_map2 + geom_polygon(color="black", fill=NA)
+p_map2 <- p_map2 + theme_minimal()
+p_map2
 ```
 
-The `echo: false` option disables the printing of code (only output is displayed).
+
+2017 per capita gdp from 'worldometer', https://www.worldometers.info/gdp/gdp-per-capita/
+4 Oct 2022 deaths per 100k from Johns Hopkins Coronavirus Resource Center, https://coronavirus.jhu.edu/data/mortality
