@@ -127,7 +127,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="import-libraries" class="level2">
 <h2 class="anchored" data-anchor-id="import-libraries">Import libraries</h2>
 <div class="cell" data-messages="false">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
 ✔ ggplot2 3.3.6      ✔ purrr   0.3.4 
@@ -136,42 +135,103 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ✔ readr   2.1.3      ✔ forcats 0.5.2 
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mapdata)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Loading required package: maps
+✖ dplyr::lag()    masks stats::lag()
+Loading required package: maps
+
 
 Attaching package: 'maps'
 
+
 The following object is masked from 'package:purrr':
 
-    map</code></pre>
+    map
+
+
+Loading required package: sp
+
+### Welcome to rworldmap ###
+
+For a short introduction type :      vignette('rworldmap')
+
+Linking to GEOS 3.9.1, GDAL 3.4.3, PROJ 7.2.1; sf_use_s2() is TRUE
+
+rgeos version: 0.5-9, (SVN revision 684)
+ GEOS runtime version: 3.9.1-CAPI-1.14.2 
+ Please note that rgeos will be retired by the end of 2023,
+plan transition to sf functions using GEOS at your earliest convenience.
+ GEOS using OverlayNG
+ Linking to sp version: 1.5-0 
+ Polygon checking: TRUE 
+
+
+
+Attaching package: 'plotly'
+
+
+The following object is masked from 'package:ggplot2':
+
+    last_plot
+
+
+The following object is masked from 'package:stats':
+
+    filter
+
+
+The following object is masked from 'package:graphics':
+
+    layout</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(maps)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="import-data" class="level2">
 <h2 class="anchored" data-anchor-id="import-data">Import data</h2>
 <div class="cell" data-messages="false">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>gdp <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">pscha</span><span class="sc">\\</span><span class="st">Documents</span><span class="sc">\\</span><span class="st">_School</span><span class="sc">\\</span><span class="st">2022_Fall_Classes</span><span class="sc">\\</span><span class="st">STAA_566_DataViz</span><span class="sc">\\</span><span class="st">maps-pschaeferdc</span><span class="sc">\\</span><span class="st">2017_gdp.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>covid <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">pscha</span><span class="sc">\\</span><span class="st">Documents</span><span class="sc">\\</span><span class="st">_School</span><span class="sc">\\</span><span class="st">2022_Fall_Classes</span><span class="sc">\\</span><span class="st">STAA_566_DataViz</span><span class="sc">\\</span><span class="st">maps-pschaeferdc</span><span class="sc">\\</span><span class="st">covid_per_capita.csv"</span>,<span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>gdp <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">pscha</span><span class="sc">\\</span><span class="st">Documents</span><span class="sc">\\</span><span class="st">_School</span><span class="sc">\\</span><span class="st">2022_Fall_Classes</span><span class="sc">\\</span><span class="st">STAA_566_DataViz</span><span class="sc">\\</span><span class="st">maps-pschaeferdc</span><span class="sc">\\</span><span class="st">2017_gdp.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>covid <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">pscha</span><span class="sc">\\</span><span class="st">Documents</span><span class="sc">\\</span><span class="st">_School</span><span class="sc">\\</span><span class="st">2022_Fall_Classes</span><span class="sc">\\</span><span class="st">STAA_566_DataViz</span><span class="sc">\\</span><span class="st">maps-pschaeferdc</span><span class="sc">\\</span><span class="st">covid_per_capita.csv"</span>,<span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="draw-map" class="level2">
+<h2 class="anchored" data-anchor-id="draw-map">Draw map</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>map2 <span class="ot">&lt;-</span> <span class="fu">map_data</span>(<span class="st">'world'</span>)<span class="sc">%&gt;%</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">region =</span> <span class="fu">str_to_title</span>(region))</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>p_map2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> map2,</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> long, <span class="at">y =</span> lat,</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">group =</span> group))</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>p_map2 <span class="ot">&lt;-</span> p_map2 <span class="sc">+</span> <span class="fu">geom_polygon</span>(<span class="at">color=</span><span class="st">"black"</span>, <span class="at">fill=</span><span class="cn">NA</span>)</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>p_map2 <span class="ot">&lt;-</span> p_map2 <span class="sc">+</span> <span class="fu">theme_minimal</span>()</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>p_map2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>world_sf <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(<span class="fu">getMap</span>(<span class="at">resolution =</span> <span class="st">"low"</span>))<span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#mutate(region = str_to_title(region))%&gt;%</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(covid,<span class="at">by =</span> <span class="fu">c</span>(<span class="st">"GEOUNIT"</span> <span class="ot">=</span> <span class="st">"country"</span>))<span class="sc">%&gt;%</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(gdp,<span class="at">by =</span> <span class="fu">c</span>(<span class="st">"GEOUNIT"</span> <span class="ot">=</span> <span class="st">"country"</span>))</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>bidata <span class="ot">&lt;-</span> <span class="fu">bi_class</span>(world_sf, <span class="at">x =</span> death_100k, <span class="at">y =</span> gdp_nom_percap, <span class="at">style =</span> <span class="st">"quantile"</span>, <span class="at">dim =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in classInt::classIntervals(.data[[var]], n = dim, style = style): var
+has missing values, omitted in finding classes
+
+Warning in classInt::classIntervals(.data[[var]], n = dim, style = style): var
+has missing values, omitted in finding classes</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#make map</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>map <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> bidata, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">fill =</span> bi_class), <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">size =</span> <span class="fl">0.1</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bi_scale_fill</span>(<span class="at">pal =</span> <span class="st">"GrPink"</span>, <span class="at">dim =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Global COVID-19 Deaths and Per Capita Income"</span>)<span class="sc">+</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bi_theme</span>()</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>map <span class="ot">&lt;-</span> map <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>))</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># make legend</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>legend <span class="ot">&lt;-</span> <span class="fu">bi_legend</span>(<span class="at">pal =</span> <span class="st">"GrPink"</span>,</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>                    <span class="at">dim =</span> <span class="dv">3</span>,</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>                    <span class="at">xlab =</span> <span class="st">"Higher deaths per 100K "</span>,</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>                    <span class="at">ylab =</span> <span class="st">"Higher GDP "</span>,</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>                    <span class="at">size =</span> <span class="dv">6</span>)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>legend <span class="ot">&lt;-</span> legend<span class="sc">+</span><span class="fu">theme</span>(<span class="at">legend.text=</span><span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">20</span>)) <span class="co">#change font size of legend text</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co"># map and legend</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>finalPlot <span class="ot">&lt;-</span> <span class="fu">ggdraw</span>() <span class="sc">+</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">draw_plot</span>(map, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">draw_plot</span>(legend, <span class="fl">0.0</span>, .<span class="dv">3</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>)</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>finalPlot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>2017 per capita gdp from ‘worldometer’, https://www.worldometers.info/gdp/gdp-per-capita/ 4 Oct 2022 deaths per 100k from Johns Hopkins Coronavirus Resource Center, https://coronavirus.jhu.edu/data/mortality</p>
+<p>I made this map as an exercise in data exploration 2017 per capita gdp from ‘worldometer’, https://www.worldometers.info/gdp/gdp-per-capita/ 4 Oct 2022 deaths per 100k from Johns Hopkins Coronavirus Resource Center, https://coronavirus.jhu.edu/data/mortality how I did it: https://cran.r-project.org/web/packages/biscale/vignettes/biscale.html</p>
 </section>
 
 </main>
